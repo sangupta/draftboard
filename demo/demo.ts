@@ -106,7 +106,12 @@ function addExample(element: HTMLElement, example: ExampleInfo): void {
     pre.innerText = example.code;
 
     const svg = document.createElement('div');
+    svg.className = 'svg-container';
+    svg.appendChild(document.createTextNode('SVG'));
+
     const canvas = document.createElement('div');
+    canvas.className = 'canvas-container';
+    canvas.appendChild(document.createTextNode('Canvas'));
 
     wrapper.appendChild(pre);
     wrapper.appendChild(svg);

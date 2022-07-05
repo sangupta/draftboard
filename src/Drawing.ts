@@ -33,7 +33,7 @@ export default class Drawing extends Groupable {
         this.origin = new Position(originX, originY);
 
         this.stroke = 'black';
-        this.fill = 'white';
+        // this.fill = 'white';
     }
 
     addChild(shape: Shape): void {

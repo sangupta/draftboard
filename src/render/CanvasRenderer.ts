@@ -17,24 +17,27 @@ import Rectangle from "../shape/Rectangle";
  */
 export function renderCanvas(drawing: Drawing): HTMLCanvasElement {
     const canvas = document.createElement('canvas');
-
     if (drawing) {
         // set width and height
         if (drawing.width > 0) {
             canvas.width = drawing.width;
+            canvas.style.width = drawing.width + 'px';
         }
         if (drawing.height > 0) {
             canvas.height = drawing.height;
+            canvas.style.height = drawing.height + 'px';
         }
 
         // flip horizontally
         const context = canvas.getContext('2d');
-        // context?.scale(1, -1);
+        context?.translate(0, drawing.height);
+        context?.scale(1, -1);
 
         // start adding children
         if (context) {
             renderChildren(context, drawing.children);
         }
+
     }
 
     return canvas;
@@ -94,6 +97,7 @@ function renderGroup(context: CanvasRenderingContext2D, group: Group): void {
 
 function renderArc(context: CanvasRenderingContext2D, arc: Arc): void {
     context.arc(arc.center.x, arc.center.y, arc.radius, toRadians(arc.startAngle), toRadians(arc.endAngle));
+    context.stroke();
 }
 
 function renderPolyLine(context: CanvasRenderingContext2D, polyline: PolyLine): void {
@@ -125,10 +129,12 @@ function renderRectange(context: CanvasRenderingContext2D, rect: Rectangle): voi
     } else {
         context.rect(computed.x, computed.y, computed.width, computed.height);
     }
+    context.stroke();
 }
 
 function renderCircle(context: CanvasRenderingContext2D, circle: Circle): void {
     context.ellipse(circle.center.x, circle.center.y, circle.radius, circle.radius, 0, PI_2, 0);
+    context.stroke();
 }
 
 function renderLine(context: CanvasRenderingContext2D, line: Line): void {

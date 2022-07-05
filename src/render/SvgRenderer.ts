@@ -92,6 +92,11 @@ function renderGroup(group: Group): SVGGElement {
 function renderArc(arc: Arc): SVGPathElement {
     const element: SVGPathElement = document.createElementNS(SVG_NS, 'path');
 
+    let d = 'M ' + arc.center.x + ' ' + arc.center.y + ' ';
+    d += 'A ' + arc.radius + ' ' + arc.radius + ' 0 1 0 0 0';
+    setAttribute(element, 'd', d);
+
+    addDefaultShapeAttributes(element, arc);
     return element;
 }
 
@@ -172,7 +177,7 @@ function renderLine(line: Line): SVGLineElement {
 
 function addDefaultShapeAttributes(element: SVGElement, shape: Shape): void {
     setAttribute(element, 'stroke', shape.stroke);
-    setAttribute(element, 'fill', shape.fill);
+    setAttribute(element, 'fill', shape.fill || 'white');
     setAttribute(element, 'color', shape.color);
     setAttribute(element, 'id', shape.id);
     setAttribute(element, 'class', shape.cssClass);

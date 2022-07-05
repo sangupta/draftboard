@@ -1,0 +1,12 @@
+{
+    "name": "draftboard",
+    "description": "A cartesian coordinate based drafting board that can render to SVG and Canvas.",
+    "version": "0.0.1",
+    "scripts": {
+        "demo": "parcel serve demo/index.html --port 1309"
+    },
+    "devDependencies": {
+        "typescript": "^4.7.4",
+        "parcel": "^2.6.2"
+    }
+}

@@ -96,6 +96,9 @@ function addExample(element: HTMLElement, example: ExampleInfo): void {
         return;
     }
 
+    console.log('drawing: ', drawing);
+
+    // create HTML structure
     const wrapper = document.createElement('div');
     wrapper.className = 'example-wrapper';
 
@@ -111,6 +114,7 @@ function addExample(element: HTMLElement, example: ExampleInfo): void {
 
     element.appendChild(wrapper);
 
+    // render drawing
     canvas.appendChild(renderCanvas(drawing));
     svg.appendChild(renderSvg(drawing));
 }

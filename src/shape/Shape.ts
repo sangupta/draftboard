@@ -1,8 +1,8 @@
-import Parent from "../Parent";
+import Groupable from "../Groupable";
 
 export default abstract class Shape {
 
-    parent: Parent;
+    parent: Groupable;
     stroke: string;
     fill: string;
     color: string;
@@ -10,11 +10,11 @@ export default abstract class Shape {
     id: string;
     cssClass: string;
 
-    constructor(parent: Parent) {
+    constructor(parent: Groupable) {
         this.parent = parent;
     }
 
-    getParent(): Parent {
+    getParent(): Groupable {
         return this.parent;
     }
 

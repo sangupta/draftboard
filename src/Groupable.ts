@@ -8,7 +8,7 @@ import Text from "./shape/Text";
 import Arc from "./shape/Arc";
 import { TextAnchor } from "./Drawing";
 
-export default abstract class Parent {
+export default abstract class Groupable {
 
     stroke: string;
     fill: string;
@@ -16,17 +16,17 @@ export default abstract class Parent {
 
     abstract addChild(shape: Shape): void;
 
-    setStroke(s: string): Parent {
+    setStroke(s: string): Groupable {
         this.stroke = s;
         return this;
     }
 
-    setFill(f: string): Parent {
+    setFill(f: string): Groupable {
         this.fill = f;
         return this;
     }
 
-    setColor(c: string): Parent {
+    setColor(c: string): Groupable {
         this.color = c;
         return this;
     }

@@ -1,8 +1,8 @@
 import Drawing from "./Drawing";
-import Parent from "./Parent";
+import Groupable from "./Groupable";
 import Shape from "./shape/Shape";
 
-export default class Group extends Parent {
+export default class Group extends Groupable {
 
     drawing: Drawing;
 

@@ -1,11 +1,11 @@
-import Parent from './../src/Parent';
+import Groupable from '../src/Groupable';
 import Drawing from './../src/Drawing';
 import { renderSvg } from '../src/render/SvgRenderer';
 import { renderCanvas } from '../src/render/CanvasRenderer';
 
 interface ExampleInfo {
     code: string;
-    element: Parent
+    element: Groupable
 }
 
 const examples: { [key: string]: Array<ExampleInfo> } = {

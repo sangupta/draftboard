@@ -1,5 +1,5 @@
 import Group from "./Group";
-import Parent from "./Parent";
+import Groupable from "./Groupable";
 import Position from "./Position";
 import Shape from "./shape/Shape";
 
@@ -16,7 +16,7 @@ export type TextAnchor = 'start' | 'end' | 'middle';
  * 
  * @author sangupta
  */
-export default class Drawing extends Parent {
+export default class Drawing extends Groupable {
 
     width: number;
     height: number;

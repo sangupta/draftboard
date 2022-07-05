@@ -7,6 +7,8 @@ import Rectangle from "./shape/Rectangle";
 import Text from "./shape/Text";
 import Arc from "./shape/Arc";
 import { TextAnchor } from "./Drawing";
+import PolyLine from "./shape/PolyLine";
+import Polygon from "./shape/Polygon";
 
 export default abstract class Groupable {
 
@@ -34,7 +36,7 @@ export default abstract class Groupable {
     addLine(x1: number, y1: number, x2: number, y2: number): Line {
         const line = new Line(this);
         line.set(x1, y1, x2, y2);
-        
+
         line.stroke = this.stroke;
         line.color = this.color;
         line.fill = this.fill;
@@ -45,7 +47,7 @@ export default abstract class Groupable {
 
     addCircle(x: number, y: number, radius: number): Circle {
         const circle = new Circle(this);
-        
+
         circle.radius = radius;
         circle.center = new Position(x, y);
         circle.stroke = this.stroke;
@@ -58,7 +60,7 @@ export default abstract class Groupable {
 
     addArc(x: number, y: number, radius: number, startAngle: number, endAngle: number): Arc {
         const arc = new Arc(this);
-        
+
         arc.center = new Position(x, y);
         arc.radius = radius;
         arc.startAngle = startAngle;
@@ -73,7 +75,7 @@ export default abstract class Groupable {
 
     addSlice(x: number, y: number, radius: number, startAngle: number, endAngle: number): Slice {
         const slice = new Slice(this);
-        
+
         slice.center = new Position(x, y);
         slice.radius = radius;
         slice.startAngle = startAngle;
@@ -88,7 +90,7 @@ export default abstract class Groupable {
 
     addRectangle(x1: number, y1: number, x2: number, y2: number): Rectangle {
         const rect = new Rectangle(this);
-        
+
         rect.start = new Position(x1, y1);
         rect.end = new Position(x2, y2);
         rect.stroke = this.stroke;
@@ -101,7 +103,7 @@ export default abstract class Groupable {
 
     addText(x: number, y: number, text: string, align: TextAnchor = 'start'): Text {
         const txt = new Text(this);
-        
+
         txt.position = new Position(x, y);
         txt.text = text;
         txt.align = align;
@@ -111,6 +113,36 @@ export default abstract class Groupable {
 
         this.addChild(txt);
         return txt;
+    }
+
+    addPolyline(...args: Array<number>): PolyLine {
+        const polyline = new PolyLine(this);
+
+        for (let index = 0; index < args.length; index += 2) {
+            polyline.points.push(new Position(args[index], args[index + 1]));
+        }
+
+        polyline.stroke = this.stroke;
+        polyline.color = this.color;
+        polyline.fill = this.fill;
+
+        this.addChild(polyline);
+        return polyline;
+    }
+
+    addPolygon(...args: Array<number>): PolyLine {
+        const polygon = new Polygon(this);
+
+        for (let index = 0; index < args.length; index += 2) {
+            polygon.points.push(new Position(args[index], args[index + 1]));
+        }
+
+        polygon.stroke = this.stroke;
+        polygon.color = this.color;
+        polygon.fill = this.fill;
+
+        this.addChild(polygon);
+        return polygon;
     }
 
     addCubicBezierCurve() {

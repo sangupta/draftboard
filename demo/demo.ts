@@ -49,10 +49,16 @@ const examples: { [key: string]: Array<ExampleInfo> } = {
 
     ],
     "Polygon": [
-
+        {
+            code: 'addPolygon(10, 10, 40, 40, 60, 40, 80, 20, 100, 100, 120, 10)',
+            element: new Drawing(200, 200).addPolygon(10, 10, 40, 40, 60, 40, 80, 20, 100, 100, 120, 10).getParent()
+        }
     ],
     "Polyline": [
-
+        {
+            code: 'addPolyline(20, 20, 40, 40, 60, 40, 80, 20, 100, 100, 120, 10)',
+            element: new Drawing(200, 200).addPolyline(20, 20, 40, 40, 60, 40, 80, 20, 100, 100, 120, 10).getParent()
+        }
     ]
 };
 

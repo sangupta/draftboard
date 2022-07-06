@@ -9,6 +9,7 @@ import PolyLine from "./shape/PolyLine";
 import Polygon from "./shape/Polygon";
 import Triangle from "./composite/Triangle";
 import Slice from "./composite/Slice";
+import Marker from "./composite/Marker";
 
 /**
  * A simple element that acts as a group of elements.
@@ -110,6 +111,12 @@ export default abstract class Groupable {
         const triangle = new Triangle(x1, y1, x2, y2, x3, y3);
         this.addShape(triangle);
         return triangle;
+    }
+
+    addMarker(x:number, y:number, text:string = ''):Marker {
+        const marker = new Marker(x, y, text);
+        this.addShape(marker);
+        return marker;
     }
 
 }

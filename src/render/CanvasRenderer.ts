@@ -10,6 +10,7 @@ import PolyLine from "../shape/PolyLine";
 import Rectangle from "../shape/Rectangle";
 import CompositeShape from "../composite/CompositeShape";
 import Shape from "../shape/Shape";
+import Text from "../shape/Text";
 
 /**
  * Converts a complete `Drawing` into a CANVAS element.
@@ -100,10 +101,19 @@ function renderChild(context: CanvasRenderingContext2D, child: DrawingKid): void
         return;
     }
 
+    if (child instanceof Text) {
+        renderText(context, child as Text);
+        return;
+    }
+
     if (child instanceof Group) {
         renderGroup(context, child as Group);
         return;
     }
+}
+
+function renderText(context: CanvasRenderingContext2D, text: Text): void {
+    context.fillText(text.text, text.position.x, text.position.y);
 }
 
 function renderGroup(context: CanvasRenderingContext2D, group: Group): void {

@@ -49,6 +49,22 @@ const examples: { [key: string]: Array<ExampleInfo> } = {
             element: new Drawing(200, 200).addTriangle(100, 50, 50, 100, 150, 100).getParent()
         }
     ],
+    "Text": [
+        {
+            code: "addText(50, 50, 'Hello, World!')",
+            element: new Drawing(200, 200).addText(50, 50, 'Hello, World!').getParent()
+        },
+        {
+            code: "addText(50, 150, 'Hello, DraftBoard.')",
+            element: new Drawing(200, 200).addText(50, 150, 'Hello, DraftBoard!').getParent()
+        }
+    ],
+    "Marker": [
+        {
+            code: "addMarker(50, 50, 'Hello world')",
+            element: new Drawing(200, 200).addMarker(50, 50, 'Hello world').getParent()
+        }
+    ],
     "Arc": [
 
     ],

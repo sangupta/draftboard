@@ -10,6 +10,7 @@ import PolyLine from "../shape/PolyLine";
 import Rectangle from "../shape/Rectangle";
 import Shape from "../shape/Shape";
 import CompositeShape from "../composite/CompositeShape";
+import Text from "../shape/Text";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -96,10 +97,22 @@ function renderChild(svgElement: SVGElement, child: DrawingKid) {
         return;
     }
 
+    if (child instanceof Text) {
+        svgElement.appendChild(renderText(child as Text));
+    }
+
     if (child instanceof Group) {
         svgElement.appendChild(renderGroup(child as Group));
         return;
     }
+}
+
+function renderText(text: Text): SVGTextElement {
+    const element: SVGTextElement = document.createElementNS(SVG_NS, 'text');
+    element.textContent = text.text;
+    setAttribute(element, 'x', text.position.x);
+    setAttribute(element, 'y', text.position.y);
+    return element;
 }
 
 function renderGroup(group: Group): SVGGElement {

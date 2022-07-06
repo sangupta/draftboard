@@ -1,9 +1,19 @@
 import Position from "../Position";
 import Shape from "./Shape";
 
+/**
+ * The line shape.
+ */
 export default class Line extends Shape {
 
+    /**
+     * Starting position.
+     */
     start: Position;
+
+    /**
+     * End position.
+     */
     end: Position;
 
     set(x1: number, y1: number, x2: number, y2: number): Line {

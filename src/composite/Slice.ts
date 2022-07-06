@@ -1,7 +1,8 @@
 import Position from "../Position";
-import Shape from "./Shape";
+import Shape from "../shape/Shape";
+import CompositeShape from "./CompositeShape";
 
-export default class Slice extends Shape {
+export default class Slice extends CompositeShape {
 
     center: Position;
     radius: number;
@@ -25,7 +26,7 @@ export default class Slice extends Shape {
 
     decompose(): Array<Shape> {
         const elements: Array<Shape> = [];
-
         return elements;
     }
+    
 }

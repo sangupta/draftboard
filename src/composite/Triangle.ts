@@ -21,7 +21,9 @@ export default class Triangle extends CompositeShape {
 
     decompose(): Array<Shape> {
         return [
-            
+            this.copyProps(Line.getLine(this.p1, this.p2)),
+            this.copyProps(Line.getLine(this.p2, this.p3)),
+            this.copyProps(Line.getLine(this.p3, this.p1))
         ];
     }
 

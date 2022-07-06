@@ -11,4 +11,12 @@ export default abstract class CompositeShape extends Shape {
      */
     abstract decompose(): Array<Shape>
 
+    copyProps(shape: Shape): Shape {
+        shape.stroke = this.stroke;
+        shape.fill = this.fill;
+        shape.color = this.color;
+
+        return shape;
+    }
+
 }

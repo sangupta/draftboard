@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "target": "esnext",
+        "strict": true,
+        "rootDir": "./",
+        "incremental": true,
+        "lib": [
+            "DOM",
+            "ESNext"
+        ],
+        "allowSyntheticDefaultImports": true
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}

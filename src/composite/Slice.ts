@@ -19,7 +19,7 @@ export default class Slice extends CompositeShape {
     radius: number;
     startAngle: number;
     endAngle: number;
-    text: string;
+    text: string = '';
 
     constructor(x: number, y: number, radius: number, startAngle: number, endAngle: number) {
         super();

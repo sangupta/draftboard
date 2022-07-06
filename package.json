@@ -3,7 +3,8 @@
     "description": "A cartesian coordinate based drafting board that can render to SVG and Canvas.",
     "version": "0.0.1",
     "scripts": {
-        "demo": "parcel serve demo/index.html --port 1309"
+        "demo": "parcel serve demo/index.html --port 1309",
+        "tsc": "tsc --noEmit"
     },
     "devDependencies": {
         "typescript": "^4.7.4",

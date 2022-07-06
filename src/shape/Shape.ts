@@ -21,39 +21,43 @@ export default abstract class Shape {
     /**
      * The parent `Groupable` that contains this child.
      */
-    parent: Groupable;
+    parent: Groupable | undefined;
 
     /**
      * Stroke color
      */
-    stroke: string;
+    stroke: string = '';
 
     /**
      * Fill color
      */
-    fill: string;
+    fill: string = '';
 
     /**
      * General color
      */
-    color: string;
+    color: string = '';
 
     /**
      * Tooltip associated with the shape
      */
-    tooltip: string;
+    tooltip: string = '';
 
     /**
      * Shape ID
      */
-    id: string;
+    id: string = '';
 
     /**
      * Any CSS class associated with the shape
      */
-    cssClass: string;
+    cssClass: string = '';
 
     getParent(): Groupable {
+        if(!this.parent) {
+            throw new Error('Parent is not defined');
+        }
+        
         return this.parent;
     }
 

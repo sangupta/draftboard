@@ -28,9 +28,9 @@ import Marker from "./composite/Marker";
  */
 export default abstract class Groupable {
 
-    stroke: string;
-    fill: string;
-    color: string;
+    stroke: string = '';
+    fill: string = '';
+    color: string = '';
 
     abstract addChild(shape: Shape): void;
 

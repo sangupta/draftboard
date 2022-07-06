@@ -27,4 +27,11 @@ export default class Ellipse extends Shape {
      */
     radius: Position;
 
+    constructor(x: number, y: number, rx: number, ry: number) {
+        super();
+
+        this.center = new Position(x, y);
+        this.radius = new Position(x, y);
+    }
+
 }

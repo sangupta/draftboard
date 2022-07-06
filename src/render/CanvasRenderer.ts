@@ -8,6 +8,8 @@ import Line from "../shape/Line";
 import Polygon from "../shape/Polygon";
 import PolyLine from "../shape/PolyLine";
 import Rectangle from "../shape/Rectangle";
+import CompositeShape from "../composite/CompositeShape";
+import Shape from "../shape/Shape";
 
 /**
  * Converts a complete `Drawing` into a CANVAS element.
@@ -48,47 +50,60 @@ function renderChildren(context: CanvasRenderingContext2D, children: Array<Drawi
         return;
     }
 
-    children.forEach(child => {
-        if (child instanceof Line) {
-            renderLine(context, child as Line);
-            return;
-        }
-
-        if (child instanceof Circle) {
-            renderCircle(context, child as Circle);
-            return;
-        }
-
-        if (child instanceof Rectangle) {
-            renderRectange(context, child as Rectangle);
-            return;
-        }
-
-        if (child instanceof Ellipse) {
-            renderEllipse(context, child as Ellipse);
-            return;
-        }
-
-        if (child instanceof Polygon) {
-            renderPolygon(context, child as Polygon);
-            return;
-        }
-
-        if (child instanceof PolyLine) {
-            renderPolyLine(context, child as PolyLine);
-            return;
-        }
-
-        if (child instanceof Arc) {
-            renderArc(context, child as Arc);
-            return;
-        }
-
-        if (child instanceof Group) {
-            renderGroup(context, child as Group);
-            return;
-        }
+    children.forEach((child: DrawingKid) => {
+        renderChild(context, child);
     });
+}
+
+function renderChild(context: CanvasRenderingContext2D, child: DrawingKid): void {
+    if (!child) {
+        return;
+    }
+
+    if (child instanceof CompositeShape) {
+        renderChildren(context, (child as CompositeShape).decompose());
+        return;
+    }
+
+    if (child instanceof Line) {
+        renderLine(context, child as Line);
+        return;
+    }
+
+    if (child instanceof Circle) {
+        renderCircle(context, child as Circle);
+        return;
+    }
+
+    if (child instanceof Rectangle) {
+        renderRectange(context, child as Rectangle);
+        return;
+    }
+
+    if (child instanceof Ellipse) {
+        renderEllipse(context, child as Ellipse);
+        return;
+    }
+
+    if (child instanceof Polygon) {
+        renderPolygon(context, child as Polygon);
+        return;
+    }
+
+    if (child instanceof PolyLine) {
+        renderPolyLine(context, child as PolyLine);
+        return;
+    }
+
+    if (child instanceof Arc) {
+        renderArc(context, child as Arc);
+        return;
+    }
+
+    if (child instanceof Group) {
+        renderGroup(context, child as Group);
+        return;
+    }
 }
 
 function renderGroup(context: CanvasRenderingContext2D, group: Group): void {

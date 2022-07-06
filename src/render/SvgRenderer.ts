@@ -9,6 +9,7 @@ import Polygon from "../shape/Polygon";
 import PolyLine from "../shape/PolyLine";
 import Rectangle from "../shape/Rectangle";
 import Shape from "../shape/Shape";
+import CompositeShape from "../composite/CompositeShape";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -39,53 +40,66 @@ function renderChildren(svgElement: SVGElement, children: Array<DrawingKid>): vo
         return;
     }
 
-    children.forEach(child => {
-        if (child instanceof Line) {
-            svgElement.appendChild(renderLine(child as Line));
-            return;
-        }
-
-        if (child instanceof Circle) {
-            const circle = child as Circle;
-            if (circle.startAngle === 0 && circle.endAngle === 360) {
-                svgElement.appendChild(renderCircle(circle));
-            } else {
-                svgElement.appendChild(renderRadialArc(circle));
-            }
-
-            return;
-        }
-
-        if (child instanceof Rectangle) {
-            svgElement.appendChild(renderRectange(child as Rectangle));
-            return;
-        }
-
-        if (child instanceof Ellipse) {
-            svgElement.appendChild(renderEllipse(child as Ellipse));
-            return;
-        }
-
-        if (child instanceof Polygon) {
-            svgElement.appendChild(renderPolygon(child as Polygon))
-            return;
-        }
-
-        if (child instanceof PolyLine) {
-            svgElement.appendChild(renderPolyLine(child as PolyLine))
-            return;
-        }
-
-        if (child instanceof Arc) {
-            svgElement.appendChild(renderArc(child as Arc))
-            return;
-        }
-
-        if (child instanceof Group) {
-            svgElement.appendChild(renderGroup(child as Group));
-            return;
-        }
+    children.forEach((child: DrawingKid) => {
+        renderChild(svgElement, child);
     });
+}
+
+function renderChild(svgElement: SVGElement, child: DrawingKid) {
+    if (!child) {
+        return;
+    }
+
+    if (child instanceof CompositeShape) {
+        renderChildren(svgElement, (child as CompositeShape).decompose());
+        return;
+    }
+
+    if (child instanceof Line) {
+        svgElement.appendChild(renderLine(child as Line));
+        return;
+    }
+
+    if (child instanceof Circle) {
+        const circle = child as Circle;
+        if (circle.startAngle === 0 && circle.endAngle === 360) {
+            svgElement.appendChild(renderCircle(circle));
+        } else {
+            svgElement.appendChild(renderRadialArc(circle));
+        }
+
+        return;
+    }
+
+    if (child instanceof Rectangle) {
+        svgElement.appendChild(renderRectange(child as Rectangle));
+        return;
+    }
+
+    if (child instanceof Ellipse) {
+        svgElement.appendChild(renderEllipse(child as Ellipse));
+        return;
+    }
+
+    if (child instanceof Polygon) {
+        svgElement.appendChild(renderPolygon(child as Polygon))
+        return;
+    }
+
+    if (child instanceof PolyLine) {
+        svgElement.appendChild(renderPolyLine(child as PolyLine))
+        return;
+    }
+
+    if (child instanceof Arc) {
+        svgElement.appendChild(renderArc(child as Arc))
+        return;
+    }
+
+    if (child instanceof Group) {
+        svgElement.appendChild(renderGroup(child as Group));
+        return;
+    }
 }
 
 function renderGroup(group: Group): SVGGElement {

@@ -1,8 +1,6 @@
 import Shape from "./shape/Shape";
 import Line from "./shape/Line";
 import Circle from "./shape/Circle";
-import Position from "./Position";
-import Slice from "./shape/Slice";
 import Rectangle from "./shape/Rectangle";
 import Text from "./shape/Text";
 import Arc from "./shape/Arc";
@@ -10,7 +8,12 @@ import { TextAnchor } from "./Drawing";
 import PolyLine from "./shape/PolyLine";
 import Polygon from "./shape/Polygon";
 import Triangle from "./composite/Triangle";
+import Slice from "./composite/Slice";
 
+/**
+ * A simple element that acts as a group of elements.
+ * 
+ */
 export default abstract class Groupable {
 
     stroke: string;
@@ -43,11 +46,7 @@ export default abstract class Groupable {
         this.addChild(shape);
     }
 
-    addTriangle(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number): Triangle {
-        const triangle = new Triangle(x1, y1, x2, y2, x3, y3);
-        this.addShape(triangle);
-        return triangle;
-    }
+    // SIMPLE SHAPES
 
     addLine(x1: number, y1: number, x2: number, y2: number): Line {
         const line = new Line(x1, y1, x2, y2);
@@ -65,12 +64,6 @@ export default abstract class Groupable {
         const arc = new Arc(x, y, radius, startAngle, endAngle);
         this.addShape(arc);
         return arc;
-    }
-
-    addSlice(x: number, y: number, radius: number, startAngle: number, endAngle: number): Slice {
-        const slice = new Slice(x, y, radius, startAngle, endAngle);
-        this.addShape(slice);
-        return slice;
     }
 
     addRectangle(x1: number, y1: number, x2: number, y2: number): Rectangle {
@@ -103,6 +96,20 @@ export default abstract class Groupable {
 
     addQuadraticBezierCurve() {
 
+    }
+
+    // COMPOSITE SHAPES
+
+    addSlice(x: number, y: number, radius: number, startAngle: number, endAngle: number): Slice {
+        const slice = new Slice(x, y, radius, startAngle, endAngle);
+        this.addShape(slice);
+        return slice;
+    }
+
+    addTriangle(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number): Triangle {
+        const triangle = new Triangle(x1, y1, x2, y2, x3, y3);
+        this.addShape(triangle);
+        return triangle;
     }
 
 }

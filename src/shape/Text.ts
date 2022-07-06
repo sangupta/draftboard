@@ -19,10 +19,10 @@ export default class Text extends Shape {
     text: string;
     align: TextAnchor;
 
-    constructor(x: number, y: number, text: string, align: TextAnchor = 'start') {
+    constructor(location: Position, text: string, align: TextAnchor = 'start') {
         super();
 
-        this.position = new Position(x, y);
+        this.position = location;
         this.text = text;
         this.align = align;
     }

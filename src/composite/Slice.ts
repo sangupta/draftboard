@@ -21,10 +21,10 @@ export default class Slice extends CompositeShape {
     endAngle: number;
     text: string = '';
 
-    constructor(x: number, y: number, radius: number, startAngle: number, endAngle: number) {
+    constructor(center: Position, radius: number, startAngle: number, endAngle: number) {
         super();
 
-        this.center = new Position(x, y);
+        this.center = center;
         this.radius = radius;
         this.startAngle = startAngle;
         this.endAngle = endAngle;

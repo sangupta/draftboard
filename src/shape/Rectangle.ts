@@ -32,11 +32,11 @@ export default class Rectangle extends Shape {
      */
     // cornerRadius: Position = new Position(0, 0);
 
-    constructor(x1: number, y1: number, x2: number, y2: number) {
+    constructor(p1: Position, p2: Position) {
         super();
 
-        this.start = new Position(x1, y1);
-        this.end = new Position(x2, y2);
+        this.start = p1;
+        this.end = p2;
     }
 
     // setRadius(rx: number, ry: number): Rectangle {

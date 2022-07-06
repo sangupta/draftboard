@@ -19,10 +19,10 @@ export default class Arc extends Shape {
     startAngle: number;
     endAngle: number;
 
-    constructor(x: number, y: number, radius: number, startAngle: number, endAngle: number) {
+    constructor(center: Position, radius: number, startAngle: number, endAngle: number) {
         super();
 
-        this.center = new Position(x, y);
+        this.center = center;
         this.radius = radius;
         this.startAngle = startAngle;
         this.endAngle = endAngle;

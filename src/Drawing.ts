@@ -47,6 +47,18 @@ export default class Drawing extends Groupable {
         // this.fill = 'white';
     }
 
+    getBoardWidth(): number {
+        return this.width;
+    }
+
+    getBoardHeight(): number {
+        return this.height;
+    }
+
+    getOrigin(): Position {
+        return this.origin;
+    }
+
     addChild(shape: Shape): void {
         this.children.push(shape);
     }
@@ -57,7 +69,14 @@ export default class Drawing extends Groupable {
         return group;
     }
 
-    setOrigin(x: number, y: number) {
+    /**
+     * Move the origin to the new coordinates specified
+     * in relation to the current origin.
+     * 
+     * @param x delta on X-axis
+     * @param y delta on Y-axis
+     */
+    moveOrigin(x: number, y: number) {
         this.origin.x = x;
         this.origin.y = y;
     }

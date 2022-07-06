@@ -18,8 +18,8 @@ export default class Position {
         this.y = y;
     }
 
-    set(x: number, y: number) {
-        this.x = x;
-        this.y = y;
+    addY(dy: number): Position {
+        return new Position(this.x, this.y + dy);
     }
+    
 }

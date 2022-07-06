@@ -24,17 +24,17 @@ export default class Marker extends CompositeShape {
 
     text: string;
 
-    constructor(x: number, y: number, text: string = '') {
+    constructor(center: Position, text: string = '') {
         super();
 
-        this.center = new Position(x, y);
+        this.center = center;
         this.text = text;
     }
 
     decompose(): Array<Shape> {
         return [
-            new Circle(this.center.x, this.center.y, 3).setStroke('red').setFill('red'),
-            new Text(this.center.x, this.center.y + 20, this.text)
+            new Circle(this.center, 3).setStroke('red').setFill('red'),
+            new Text(this.center.addY(20), this.text)
         ];
     }
 }

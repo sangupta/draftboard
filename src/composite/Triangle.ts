@@ -22,19 +22,19 @@ export default class Triangle extends CompositeShape {
 
     p3: Position;
 
-    constructor(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number) {
+    constructor(p1: Position, p2: Position, p3: Position) {
         super();
 
-        this.p1 = new Position(x1, y1);
-        this.p2 = new Position(x2, y2);
-        this.p3 = new Position(x3, y3);
+        this.p1 = p1;
+        this.p2 = p2;
+        this.p3 = p3;
     }
 
     decompose(): Array<Shape> {
         return [
-            this.copyProps(Line.getLine(this.p1, this.p2)),
-            this.copyProps(Line.getLine(this.p2, this.p3)),
-            this.copyProps(Line.getLine(this.p3, this.p1))
+            this.copyProps(new Line(this.p1, this.p2)),
+            this.copyProps(new Line(this.p2, this.p3)),
+            this.copyProps(new Line(this.p3, this.p1))
         ];
     }
 

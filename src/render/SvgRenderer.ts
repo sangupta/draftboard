@@ -167,8 +167,10 @@ function renderRectange(rect: Rectangle): SVGRectElement {
     setAttribute(element, 'y', computed.y)
     setAttribute(element, 'width', computed.width);
     setAttribute(element, 'height', computed.height);
-    setAttribute(element, 'rx', rect.cornerRadius?.x);
-    setAttribute(element, 'ry', rect.cornerRadius?.y);
+    // setAttribute(element, 'rx', rect.cornerRadius?.x);
+    // setAttribute(element, 'ry', rect.cornerRadius?.y);
+    setAttribute(element, 'rx', 0);
+    setAttribute(element, 'ry', 0)
 
     addDefaultShapeAttributes(element, rect);
     return element;

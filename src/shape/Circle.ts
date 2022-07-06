@@ -26,4 +26,13 @@ export default class Circle extends Shape {
      */
     endAngle: number;
     
+    constructor(x: number, y: number, radius: number, startAngle: number = 0, endAngle: number = 360) {
+        super();
+
+        this.radius = radius;
+        this.center = new Position(x, y);
+        this.startAngle = startAngle;
+        this.endAngle = endAngle;
+    }
+    
 }

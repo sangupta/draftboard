@@ -31,7 +31,7 @@ export default abstract class Shape {
      * Tooltip associated with the shape
      */
     tooltip: string;
-    
+
     /**
      * Shape ID
      */
@@ -42,12 +42,12 @@ export default abstract class Shape {
      */
     cssClass: string;
 
-    constructor(parent: Groupable) {
-        this.parent = parent;
-    }
-
     getParent(): Groupable {
         return this.parent;
+    }
+
+    setParent(parent: Groupable): void {
+        this.parent = parent;
     }
 
     setStroke(s: string): Shape {
@@ -79,5 +79,5 @@ export default abstract class Shape {
         this.cssClass = css;
         return this;
     }
-    
+
 }

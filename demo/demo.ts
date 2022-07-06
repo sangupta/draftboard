@@ -43,6 +43,12 @@ const examples: { [key: string]: Array<ExampleInfo> } = {
             element: new Drawing(200, 200).addRectangle(50, 50, 150, 150).getParent()
         }
     ],
+    "Triangle": [
+        {
+            code: 'addTriangle(100, 50, 50, 100, 150, 100)',
+            element: new Drawing(200, 200).addTriangle(100, 50, 50, 100, 150, 100).getParent()
+        }
+    ],
     "Arc": [
 
     ],

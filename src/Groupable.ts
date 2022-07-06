@@ -9,6 +9,7 @@ import Arc from "./shape/Arc";
 import { TextAnchor } from "./Drawing";
 import PolyLine from "./shape/PolyLine";
 import Polygon from "./shape/Polygon";
+import Triangle from "./composite/Triangle";
 
 export default abstract class Groupable {
 
@@ -33,117 +34,66 @@ export default abstract class Groupable {
         return this;
     }
 
+    addShape(shape: Shape): void {
+        shape.setParent(this);
+        shape.stroke = this.stroke;
+        shape.color = this.color;
+        shape.fill = this.fill;
+
+        this.addChild(shape);
+    }
+
+    addTriangle(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number): Triangle {
+        const triangle = new Triangle(x1, y1, x2, y2, x3, y3);
+        this.addShape(triangle);
+        return triangle;
+    }
+
     addLine(x1: number, y1: number, x2: number, y2: number): Line {
-        const line = new Line(this);
-        line.set(x1, y1, x2, y2);
-
-        line.stroke = this.stroke;
-        line.color = this.color;
-        line.fill = this.fill;
-
-        this.addChild(line);
+        const line = new Line(x1, y1, x2, y2);
+        this.addShape(line);
         return line;
     }
 
     addCircle(x: number, y: number, radius: number, startAngle: number = 0, endAngle: number = 360): Circle {
-        const circle = new Circle(this);
-
-        circle.radius = radius;
-        circle.center = new Position(x, y);
-        circle.startAngle = startAngle;
-        circle.endAngle = endAngle;
-        circle.stroke = this.stroke;
-        circle.color = this.color;
-        circle.fill = this.fill;
-
-        this.addChild(circle);
+        const circle = new Circle(x, y, radius, startAngle, endAngle);
+        this.addShape(circle);
         return circle;
     }
 
     addArc(x: number, y: number, radius: number, startAngle: number, endAngle: number): Arc {
-        const arc = new Arc(this);
-
-        arc.center = new Position(x, y);
-        arc.radius = radius;
-        arc.startAngle = startAngle;
-        arc.endAngle = endAngle;
-        arc.stroke = this.stroke;
-        arc.color = this.color;
-        arc.fill = this.fill;
-
-        this.addChild(arc);
+        const arc = new Arc(x, y, radius, startAngle, endAngle);
+        this.addShape(arc);
         return arc;
     }
 
     addSlice(x: number, y: number, radius: number, startAngle: number, endAngle: number): Slice {
-        const slice = new Slice(this);
-
-        slice.center = new Position(x, y);
-        slice.radius = radius;
-        slice.startAngle = startAngle;
-        slice.endAngle = endAngle;
-        slice.stroke = this.stroke;
-        slice.color = this.color;
-        slice.fill = this.fill;
-
-        this.addChild(slice);
+        const slice = new Slice(x, y, radius, startAngle, endAngle);
+        this.addShape(slice);
         return slice;
     }
 
     addRectangle(x1: number, y1: number, x2: number, y2: number): Rectangle {
-        const rect = new Rectangle(this);
-
-        rect.start = new Position(x1, y1);
-        rect.end = new Position(x2, y2);
-        rect.stroke = this.stroke;
-        rect.color = this.color;
-        rect.fill = this.fill;
-
-        this.addChild(rect);
+        const rect = new Rectangle(x1, y1, x2, y2);
+        this.addShape(rect);
         return rect;
     }
 
     addText(x: number, y: number, text: string, align: TextAnchor = 'start'): Text {
-        const txt = new Text(this);
-
-        txt.position = new Position(x, y);
-        txt.text = text;
-        txt.align = align;
-        txt.stroke = this.stroke;
-        txt.color = this.color;
-        txt.fill = this.fill;
-
-        this.addChild(txt);
+        const txt = new Text(x, y, text, align);
+        this.addShape(txt);
         return txt;
     }
 
     addPolyline(...args: Array<number>): PolyLine {
-        const polyline = new PolyLine(this);
-
-        for (let index = 0; index < args.length; index += 2) {
-            polyline.points.push(new Position(args[index], args[index + 1]));
-        }
-
-        polyline.stroke = this.stroke;
-        polyline.color = this.color;
-        polyline.fill = this.fill;
-
-        this.addChild(polyline);
+        const polyline = new PolyLine(...args);
+        this.addShape(polyline);
         return polyline;
     }
 
     addPolygon(...args: Array<number>): PolyLine {
-        const polygon = new Polygon(this);
-
-        for (let index = 0; index < args.length; index += 2) {
-            polygon.points.push(new Position(args[index], args[index + 1]));
-        }
-
-        polygon.stroke = this.stroke;
-        polygon.color = this.color;
-        polygon.fill = this.fill;
-
-        this.addChild(polygon);
+        const polygon = new Polygon(...args);
+        this.addShape(polygon);
         return polygon;
     }
 

@@ -9,7 +9,6 @@ import Polygon from "../shape/Polygon";
 import PolyLine from "../shape/PolyLine";
 import Rectangle from "../shape/Rectangle";
 import CompositeShape from "../composite/CompositeShape";
-import Shape from "../shape/Shape";
 import Text from "../shape/Text";
 
 /**

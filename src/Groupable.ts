@@ -113,7 +113,11 @@ export default abstract class Groupable {
         return triangle;
     }
 
-    addMarker(x:number, y:number, text:string = ''):Marker {
+    addMarker(x: number, y: number, text: string | undefined = undefined): Marker {
+        if(text === undefined) {
+            text = '(' + x + ', ' + y + ')';
+        }
+
         const marker = new Marker(x, y, text);
         this.addShape(marker);
         return marker;

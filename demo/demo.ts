@@ -62,7 +62,7 @@ const examples: { [key: string]: Array<ExampleInfo> } = {
     "Marker": [
         {
             code: "addMarker(50, 50, 'Hello world')",
-            element: new Drawing(200, 200).addMarker(50, 50, 'Hello world').getParent()
+            element: new Drawing(200, 200).addMarker(50, 50).getParent()
         }
     ],
     "Arc": [

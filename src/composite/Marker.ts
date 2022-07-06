@@ -1,6 +1,7 @@
 import Position from "../Position";
 import Circle from "../shape/Circle";
 import Shape from "../shape/Shape";
+import Text from "../shape/Text";
 import CompositeShape from "./CompositeShape";
 
 /**
@@ -22,6 +23,7 @@ export default class Marker extends CompositeShape {
     decompose(): Array<Shape> {
         return [
             new Circle(this.center.x, this.center.y, 3).setStroke('red').setFill('red'),
+            new Text(this.center.x, this.center.y + 20, this.text)
         ];
     }
 }

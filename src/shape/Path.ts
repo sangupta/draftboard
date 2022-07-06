@@ -26,12 +26,12 @@ export default class Path extends Shape {
         return this;
     }
 
-    line(x: number, y: number): Path {
-        const line = new Line(this.drawing, this.group).set(this.current.x, this.current.y, x, y);
-        this.children.push(line);
-        this.current.set(x, y);
-        return this;
-    }
+    // line(x: number, y: number): Path {
+    //     const line = new Line(this.drawing, this.group).set(this.current.x, this.current.y, x, y);
+    //     this.children.push(line);
+    //     this.current.set(x, y);
+    //     return this;
+    // }
 
     closePath(): void {
         this.closeAtEnd = true;

@@ -1,3 +1,14 @@
+/**
+ * DraftBoard
+ *
+ * MIT License.
+ * Copyright (c) 2022, Sandeep Gupta.
+ * https://github.com/sangupta/draftboard
+ *
+ * Use of this source code is governed by a MIT style license
+ * that can be found in LICENSE file in the code repository:
+ */
+
 import Position from "../Position";
 import Shape from "../shape/Shape";
 import CompositeShape from "./CompositeShape";
@@ -28,5 +39,5 @@ export default class Slice extends CompositeShape {
         const elements: Array<Shape> = [];
         return elements;
     }
-    
+
 }

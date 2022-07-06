@@ -1,3 +1,14 @@
+/**
+ * DraftBoard
+ *
+ * MIT License.
+ * Copyright (c) 2022, Sandeep Gupta.
+ * https://github.com/sangupta/draftboard
+ *
+ * Use of this source code is governed by a MIT style license
+ * that can be found in LICENSE file in the code repository:
+ */
+
 import Shape from "./shape/Shape";
 import Line from "./shape/Line";
 import Circle from "./shape/Circle";
@@ -114,7 +125,7 @@ export default abstract class Groupable {
     }
 
     addMarker(x: number, y: number, text: string | undefined = undefined): Marker {
-        if(text === undefined) {
+        if (text === undefined) {
             text = '(' + x + ', ' + y + ')';
         }
 

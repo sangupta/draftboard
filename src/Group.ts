@@ -1,3 +1,14 @@
+/**
+ * DraftBoard
+ *
+ * MIT License.
+ * Copyright (c) 2022, Sandeep Gupta.
+ * https://github.com/sangupta/draftboard
+ *
+ * Use of this source code is governed by a MIT style license
+ * that can be found in LICENSE file in the code repository:
+ */
+
 import Drawing from "./Drawing";
 import Groupable from "./Groupable";
 import Shape from "./shape/Shape";
@@ -9,7 +20,7 @@ export default class Group extends Groupable {
     children: Array<Shape> = [];
 
     constructor(drawing: Drawing) {
-        super();        
+        super();
         this.drawing = drawing;
     }
 

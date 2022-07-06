@@ -133,7 +133,11 @@ function renderRectange(context: CanvasRenderingContext2D, rect: Rectangle): voi
 }
 
 function renderCircle(context: CanvasRenderingContext2D, circle: Circle): void {
-    context.ellipse(circle.center.x, circle.center.y, circle.radius, circle.radius, 0, PI_2, 0);
+    if (circle.startAngle === 0 && circle.endAngle === 360) {
+        context.ellipse(circle.center.x, circle.center.y, circle.radius, circle.radius, 0, 0, PI_2, false);
+    } else {
+        context.ellipse(circle.center.x, circle.center.y, circle.radius, circle.radius, 0, toRadians(circle.startAngle), toRadians(circle.endAngle), false);
+    }
     context.stroke();
 }
 

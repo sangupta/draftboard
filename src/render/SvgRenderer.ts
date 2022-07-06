@@ -1,4 +1,4 @@
-import { computeXYWidthHeight } from "../Utils";
+import { computeXYWidthHeight, toRadians } from "../Utils";
 import Drawing, { DrawingKid } from "../Drawing";
 import Group from "../Group";
 import Arc from "../shape/Arc";
@@ -46,7 +46,13 @@ function renderChildren(svgElement: SVGElement, children: Array<DrawingKid>): vo
         }
 
         if (child instanceof Circle) {
-            svgElement.appendChild(renderCircle(child as Circle));
+            const circle = child as Circle;
+            if (circle.startAngle === 0 && circle.endAngle === 360) {
+                svgElement.appendChild(renderCircle(circle));
+            } else {
+                svgElement.appendChild(renderRadialArc(circle));
+            }
+
             return;
         }
 
@@ -160,6 +166,29 @@ function renderCircle(circle: Circle): SVGCircleElement {
     setAttribute(element, 'cy', circle.center.y);
     setAttribute(element, 'r', circle.radius);
 
+    addDefaultShapeAttributes(element, circle);
+    return element;
+}
+
+function renderRadialArc(circle: Circle): SVGPathElement {
+    const startAngleRadians = toRadians(circle.startAngle);
+    const endAngleRadians = toRadians(circle.endAngle);
+
+    const x1 = circle.center.x + circle.radius * Math.cos(startAngleRadians);
+    const y1 = circle.center.y + circle.radius * Math.sin(startAngleRadians);
+    const x2 = circle.center.x + circle.radius * Math.cos(endAngleRadians);
+    const y2 = circle.center.y + circle.radius * Math.sin(endAngleRadians);
+
+    // move to first point
+    let d = "M " + x1 + "," + y1 + " ";
+
+    // arc
+    // Radius X, Radius Y, X Axis Rotation, Large Arc Flag, Sweep Flag, End X, End Y
+    d += "A" + circle.radius + "," + circle.radius + " 0 0,1 " + x2 + "," + y2;
+
+    const element = document.createElementNS(SVG_NS, "path");
+
+    element.setAttribute("d", d);
     addDefaultShapeAttributes(element, circle);
     return element;
 }

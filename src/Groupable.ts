@@ -45,11 +45,13 @@ export default abstract class Groupable {
         return line;
     }
 
-    addCircle(x: number, y: number, radius: number): Circle {
+    addCircle(x: number, y: number, radius: number, startAngle: number = 0, endAngle: number = 360): Circle {
         const circle = new Circle(this);
 
         circle.radius = radius;
         circle.center = new Position(x, y);
+        circle.startAngle = startAngle;
+        circle.endAngle = endAngle;
         circle.stroke = this.stroke;
         circle.color = this.color;
         circle.fill = this.fill;

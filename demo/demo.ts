@@ -19,7 +19,23 @@ const examples: { [key: string]: Array<ExampleInfo> } = {
         {
             code: 'addCircle(100, 100, 50)',
             element: new Drawing(200, 200).addCircle(100, 100, 50).getParent()
-        }
+        },
+        {
+            code: 'addCircle(100, 100, 50, 0, 90)',
+            element: new Drawing(200, 200).addCircle(100, 100, 50, 0, 90).getParent()
+        },
+        {
+            code: 'addCircle(100, 100, 50, 90, 180)',
+            element: new Drawing(200, 200).addCircle(100, 100, 50, 90, 180).getParent()
+        },
+        {
+            code: 'addCircle(100, 100, 50, 180, 270)',
+            element: new Drawing(200, 200).addCircle(100, 100, 50, 180, 270).getParent()
+        },
+        {
+            code: 'addCircle(100, 100, 50, 270, 360)',
+            element: new Drawing(200, 200).addCircle(100, 100, 50, 270, 360).getParent()
+        },
     ],
     "Rectangle": [
         {
@@ -28,22 +44,7 @@ const examples: { [key: string]: Array<ExampleInfo> } = {
         }
     ],
     "Arc": [
-        {
-            code: 'addArc(100, 100, 50, 0, 90)',
-            element: new Drawing(200, 200).addArc(100, 100, 50, 0, 90).getParent()
-        },
-        {
-            code: 'addArc(100, 100, 50, 90, 180)',
-            element: new Drawing(200, 200).addArc(100, 100, 50, 90, 180).getParent()
-        },
-        {
-            code: 'addArc(100, 100, 50, 180, 270)',
-            element: new Drawing(200, 200).addArc(100, 100, 50, 180, 270).getParent()
-        },
-        {
-            code: 'addArc(100, 100, 50, 270, 360)',
-            element: new Drawing(200, 200).addArc(100, 100, 50, 270, 360).getParent()
-        },
+
     ],
     "Ellipse": [
 

@@ -68,8 +68,8 @@ export default abstract class Groupable {
 
     adjustForOrigin(x: number, y: number): Position {
         const origin = this.getOrigin();
-        const dx = origin.x - x;
-        const dy = origin.y - y;
+        const dx = x - origin.x;
+        const dy = y - origin.y;
 
         return new Position(dx, dy);
     }
